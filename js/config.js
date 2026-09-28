@@ -5,14 +5,14 @@ export const BASEMAP_STYLE_URL = "https://basemaps.cartocdn.com/gl/positron-gl-s
 export const MAP_INITIAL_VIEW = {
   center: [67.5, 48.5], // географический центр Казахстана
   zoom: 4.2,
-  minZoom: 3.3, // не давать «выйти» на весь мир
+  minZoom: 2.5, // не давать «выйти» на весь мир
   maxZoom: 18,
 };
 
 // bbox Казахстана (data/boundaries/kazakhstan.geojson) + отступ ~4° — чтобы не
 // улетать далеко за границу при панорамировании, но оставить запас у краёв
 export const MAP_MAX_BOUNDS = [
-  [42.0, 36.5], // юго-запад
+  [35.0, 30.5], // юго-запад
   [92.0, 59.5], // северо-восток
 ];
 
