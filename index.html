@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Геопортал фитосанитарной аналитики саранчовых</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="loading-overlay"><div class="spinner"></div></div>
+
+  <div id="app">
+    <aside id="filters-panel" class="panel">
+      <h1 class="app-title" data-i18n="app_title">Саранчовые Казахстана</h1>
+
+      <section class="filter-block" id="filter-species">
+        <h2 data-i18n="filter_species_title">Вид</h2>
+        <input type="text" id="select-species" list="species-datalist" autocomplete="off" />
+        <datalist id="species-datalist"></datalist>
+      </section>
+
+      <section class="filter-block" id="filter-indicator">
+        <h2 data-i18n="filter_indicator_title">Показатель</h2>
+        <select id="select-indicator"></select>
+      </section>
+
+      <section class="filter-block" id="filter-territory">
+        <h2 data-i18n="filter_territory_title">Территория</h2>
+        <div id="territory-options" class="radio-group"></div>
+        <p class="filter-note" data-i18n="territory_note">Точки наблюдений показываются на карте всегда, независимо от выбора.</p>
+        <label class="zone-layer-toggle">
+          <input type="checkbox" id="toggle-settlements-layer" />
+          <span data-i18n="show_settlements">Показать населённые пункты</span>
+        </label>
+      </section>
+
+      <section class="filter-block" id="filter-zone">
+        <h2 data-i18n="filter_zone_title">Агроклиматическая зона</h2>
+        <div id="zone-options" class="checkbox-group"></div>
+        <label class="zone-layer-toggle">
+          <input type="checkbox" id="toggle-zone-layer" />
+          <span data-i18n="show_zones_layer">Показать слой зон на карте</span>
+        </label>
+      </section>
+
+      <div id="lang-switch" class="lang-switch"></div>
+    </aside>
+
+    <main id="map">
+      <div id="legend" class="map-overlay"></div>
+    </main>
+
+    <div id="resize-handle" class="resize-handle" title="Потяните, чтобы изменить ширину панели"></div>
+
+    <aside id="results-panel" class="panel">
+      <nav id="breadcrumbs" class="breadcrumbs"></nav>
+
+      <div class="tabs" id="tabs">
+        <button class="tab-btn active" data-tab="table" type="button" data-i18n="tab_table">Таблица</button>
+        <button class="tab-btn" data-tab="chart" type="button" data-i18n="tab_chart">Диаграмма</button>
+        <button class="tab-btn" data-tab="card" type="button" data-i18n="tab_card">Карточка</button>
+      </div>
+
+      <div id="tab-table" class="tab-content"></div>
+      <div id="tab-chart" class="tab-content" hidden>
+        <canvas id="species-chart" height="260"></canvas>
+      </div>
+      <div id="tab-card" class="tab-content" hidden></div>
+    </aside>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/chart.js@4.4.4/dist/chart.umd.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
